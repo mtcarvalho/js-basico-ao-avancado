@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Seção 04 - Aula 03</title>
+    </head>
+    <body>
+        <h1>Seção 04 - Aula 03</h1>
+
+        <script>
+            var idade = 18;
+
+            if (idade >= 18) {
+                console.log("Maior de idade");
+            } else {
+                console.log("Menor de idade");
+            }
+
+            if (idade <= 14) {
+                console.log("Criança");
+            } else if (idade > 14 && idade < 18) {
+                console.log("Adolescente");
+            } else {
+                console.log("Adulto");
+            }
+
+            //Dica Geek
+            if (1 == "1") { // compara conteúdo
+                console.log('Sim, 1 == "1"');
+            } else {
+                console.log('Não,  1 != "1"');
+            }
+
+            var valor1 = 42;
+            var valor2 = "42";
+
+            if (valor1 === valor2) { // compara conteúdo E tipo de dado
+                console.log('Sim, valor1 === valor2');
+            } else {
+                console.log('Não,  valor1 !== valor2');
+            }
+
+            var sexo = "f";
+
+            switch(sexo){
+                case "m":
+                    console.log("Masculino");
+                    break;
+                case "f":
+                    console.log("Feminino");
+                    break;
+                default:
+                    console.log("Desconhecido");
+                    break;
+            }
+
+            var s = "f";
+            var masculino;
+            
+            if (s == "m") {
+                masculino = true;
+            } else {
+                masculino = false;
+            }
+
+            console.log(masculino);
+
+            //Simplificando geek
+            //var masc = (s === "m");
+            var masc = s === "m";
+            console.log(masc);
+        </script>
+    </body>
+</html>
