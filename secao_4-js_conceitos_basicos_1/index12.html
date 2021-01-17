@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Seção 04 - Aula 12</title>
+    </head>
+    <body>
+        <h1>Seção 04 - Aula 12</h1>
+
+        <script>
+
+            // Intervalos e timeout
+            function escrever(name){
+                var d = Date(Date.now()); 
+                console.log(name, d.toString());
+            }
+
+            var name = "Geek University"
+            // Intervalo
+            setInterval(escrever, 1000, name); //1 segundo
+
+            name = "JavaScript"
+            // Timeout(tempo esgotado)
+            setTimeout(escrever, 3000, name); //3 segundos
+
+        </script>
+    </body>
+</html>
