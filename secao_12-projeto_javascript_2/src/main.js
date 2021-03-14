@@ -1,11 +1,12 @@
 import api from "./api";
+import LocalStorage from "./localStorage";
 
 class App {
 
     constructor(doc) {
 
-        // Lista de repositórios
-        this.repositorios = [];
+        // Local storage armazenando repositórios
+        this.storageRepositorios = new LocalStorage("repositorios");
 
         // Form
         this.formulario = doc.querySelector("form");
@@ -15,6 +16,8 @@ class App {
 
         // Método para registrar os eventos do form
         this.registrarEventos();
+
+        this.renderizarTela();
 
     }
 
@@ -46,12 +49,15 @@ class App {
             let { name, description, html_url, owner: { avatar_url } } = response.data;
 
             // Adiciona o repositorio na lista
-            this.repositorios.push({
+            let repositorio = {
+                id: this.storageRepositorios.items.length,
                 nome: name,
                 descricao: description,
                 avatar_url,
                 link: html_url,
-            });
+            };
+
+            this.storageRepositorios.items = repositorio;
 
             // Renderizar a tela
             this.renderizarTela();
@@ -92,16 +98,24 @@ class App {
 
     }
 
+    deletarRepositorio(evento) {
+        this.storageRepositorios.removerItem(evento.target.id);
+        this.renderizarTela();
+    }
+
     renderizarTela() {
 
         // Limpar o conteúdo de lista
         this.lista.innerHTML  = "";
 
         // Percorrer toda a lista de repositórios e criar os elementos
-        this.repositorios.forEach(repositorio => {
+        this.storageRepositorios.items.forEach(repositorio => {
             //<li>
             let li = document.createElement("li");
             li.setAttribute("class", "list-group-item list-group-item-action");
+            li.setAttribute("id", repositorio.id);
+
+            li.onclick = evento => this.deletarRepositorio(evento);
 
             //<img>
             let img = document.createElement("img");
@@ -130,8 +144,6 @@ class App {
 
             // Adicionar <l1> como filho da ul
             this.lista.appendChild(li);
-
-            console.log("foi");
 
             // Limpar o conteúdo do input
             this.formulario.querySelector("input[id=repositorio]").value = "";
