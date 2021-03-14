@@ -2,5 +2,5 @@
 
 Repositório de código do curso da [Geek University](https://www.udemy.com/user/geek-university/).
 
-![Ementa](geek_university/ementa.png)
-![Meu certificado](geek_university/certificado.pdf)
+[Ementa](geek_university/ementa.png)
+[Meu certificado](geek_university/certificado.pdf)
